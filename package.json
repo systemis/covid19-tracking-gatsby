@@ -17,6 +17,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.7",
     "@types/node-fetch": "^2.5.8",
+    "@types/react-redux": "^7.1.16",
     "fetch": "^1.1.0",
     "gatsby": "^2.26.1",
     "gatsby-plugin-typescript": "^2.11.0",

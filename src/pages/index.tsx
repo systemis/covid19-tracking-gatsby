@@ -1,9 +1,14 @@
 import React from 'react'
-import Chart from '../components/chart'
+import HomePage from './home'
 
-const IndexPage = (props) => {
+import {Provider} from 'react-redux'
+import store from '../redux'
+
+const IndexPage = () => {
   return (
-    <Chart />
+    <Provider store={store}>
+      <HomePage />
+    </Provider>
   )
 }
 
