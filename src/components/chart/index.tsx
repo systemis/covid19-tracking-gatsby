@@ -5,6 +5,7 @@ const Bar = ({x, y, width, height, expenseName, highestExpense}) => {
   return (
     <>
       <rect 
+        key={`${expenseName}`}
         x={x}
         y={y}
         height={height} 
@@ -22,21 +23,21 @@ const Chart = ({data}) => {
   }, 0);
 
   const constant_avr_height:number= 5
-  var maxExpense:number  = 200 / constant_avr_height
-  var chartHeight:number = maxExpense + 4 
-  const barWidth:number  = 5
-  const barMargin:number = 3 
-  const numberOfBars:number= data.length 
-  const width:number= numberOfBars*(barWidth+barMargin)
 
+  const max_expense:number = 200/constant_avr_height
+  const chartHeight:number = max_expense + 20/constant_avr_height
 
-  const [expenseData,] = useState(data)//calculateHighestExpense(expenseData)/constant_avr_height
-  const [highestExpense,] = useState(calculateHighestExpense()/constant_avr_height)
+  const barWidth:number  = 8 
+  const barMargin:number = 2 
+
+  const width:number = data.length * (barWidth + barMargin)
+
+  var highestExpense = calculateHighestExpense()/constant_avr_height
 
   useEffect(() => {
     return ():void => {
-      console.log('Unmountting: ', JSON.stringify(expenseData));
-      console.log(highestExpense);
+      console.log('Unmountting: ', JSON.stringify(data), highestExpense);
+      return 
     }
   });
 
@@ -48,7 +49,7 @@ const Chart = ({data}) => {
       </p>
       <svg
         viewBox={`0 0 ${width} ${chartHeight}`} fill={'yellow'}>
-          {expenseData.map((_value, _index) => {
+          {data.map((_value, _index) => {
             const barHeight = _value.expense / constant_avr_height
             return (
               <Bar
