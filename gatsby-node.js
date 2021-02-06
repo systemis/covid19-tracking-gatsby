@@ -15,7 +15,7 @@ exports.sourceNodes = async ({
       parent: '__SOURCE__', 
       children: [], 
       internal: {
-        type: `RandomUser`, 
+        type: `CountriesInfo`, 
       }, 
     }
 
